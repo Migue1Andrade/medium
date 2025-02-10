@@ -1,74 +1,37 @@
 <div class="modal-content">
 	<div class="modal-header">
 		<h3 class="modal-title">Criar Nova Postagem</h3>
-		<button class="modal-close" ng-click="cancel()" aria-label="Fechar">
-			×
-		</button>
+		<button class="modal-close" ng-click="cancel()" aria-label="Fechar"> × </button>
 	</div>
 	<div class="modal-body">
 		<form name="postForm" ng-submit="register()">
 			<div class="form-group">
 				<label for="title">Título</label>
-				<input 
-					type="text" 
-					class="form-control" 
-					id="title" 
-					ng-model="newPost.title" 
-					required 
-					placeholder="Digite o título da postagem">
+				<input  type="text"  class="form-control"  id="title"  ng-model="newPost.title"  required  placeholder="Digite o título da postagem">
 			</div>
 			<div class="form-group">
 				<label for="summary">Resumo</label>
-				<textarea 
-					class="form-control" 
-					id="summary" 
-					ng-model="newPost.summary" 
-					required 
-					placeholder="Digite um breve resumo"></textarea>
+				<textarea  class="form-control"  id="summary"  ng-model="newPost.summary"  required  placeholder="Digite um breve resumo"></textarea>
 			</div>
 			<div class="form-group">
 				<label for="text">Texto</label>
-				<textarea 
-					class="form-control" 
-					id="text" 
-					ng-model="newPost.text" 
-					required 
-					placeholder="Digite o texto da postagem"></textarea>
+				<textarea  class="form-control"  id="text"  ng-model="newPost.text"  required  placeholder="Digite o texto da postagem"></textarea>
 			</div>
 			<div class="form-group">
 				<label>Imagem</label>
 				<div ng-show="!imageUrlInput">
 					<div id="imageDrop" class="drop-zone" ng-class="{'highlight': isDragging}" tabindex="0">
 						<p ng-show="!newPost.image">Clique ou arraste uma imagem aqui.</p>
-						<img 
-							ng-show="newPost.image" 
-							ng-src="{{newPost.image}}" 
-							alt="Pré-visualização da imagem" 
-							style="max-width: 200px;">
+						<img  ng-show="newPost.image"  ng-src="{{newPost.image}}"  alt="Pré-visualização da imagem"  style="max-width: 200px;">
 					</div>
 				</div>
 				<div ng-show="imageUrlInput">
 					<label for="imageUrl">URL da Imagem:</label>
-					<input 
-						type="text" 
-						class="form-control" 
-						id="imageUrl" 
-						ng-model="newPost.imageUrl" 
-						placeholder="Digite o URL da imagem">
+					<input  type="text"  class="form-control"  id="imageUrl"  ng-model="newPost.imageUrl"  placeholder="Digite o URL da imagem">
 				</div>
-				<button 
-					type="button" 
-					ng-click="toggleInput()" 
-					class="btn btn-secondary">
-					{{ imageUrlInput ? 'Usar Dropzone' : 'Usar URL' }}
-				</button>
+				<button  type="button"  ng-click="toggleInput()"  class="btn btn-secondary"> {{ imageUrlInput ? 'Usar Dropzone' : 'Usar URL' }} </button>
 			</div>
-			<button 
-				type="submit" 
-				class="btn btn-primary" 
-				ng-disabled="postForm.$invalid">
-				Enviar
-			</button>
+			<button  type="submit"  class="btn btn-primary"  ng-disabled="postForm.$invalid"> Enviar </button>
 		</form>
 	</div>
 </div>

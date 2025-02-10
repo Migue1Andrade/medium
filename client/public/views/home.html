@@ -1,5 +1,5 @@
 <section ng-controller="HomeController">
-    <header-directive></header-directive>
+	<header-directive></header-directive>
 	<div class="post-header">
 		<i class="fa-solid fa-plus post-header-elements plus-icon"></i>
 		<span class="post-header-elements">For you</span>
@@ -14,31 +14,19 @@
 			<h3>{{post.title}}</h3>
 			<h5>{{post.summary}}</h5>
 			<span>
-				<span class="date">
-					{{post.post_at}}
-				</span>
-				<span class="likes">
-					<i class="fa-regular fa-heart be-pointer" ng-click="like(post.id, $event)"></i>
-					{{post.post_likes}}
-				</span>
-				<span>
-					<i class="fa-regular fa-comment"></i>
-					{{post.comments}}
-				</span>
+				<span class="date"> {{post.post_at}} </span>
+				<span class="likes"> <i class="fa-regular fa-heart be-pointer" ng-click="like(post.id, $event)"></i> {{post.post_likes}} </span>
+				<span> <i class="fa-regular fa-comment"></i> {{post.comments}} </span>
 			</span>
 			<span class="post-footer-right">
-                <i class="fa-regular fa-trash-can trash be-pointer" ng-click="removePost(post.id, $event)"></i>
-                <i class="fa-regular fa-bookmark save"></i>
-                <i class="fa-solid fa-ellipsis-vertical ellipsis be-pointer" ng-click="toggleEdit(post.id, $event)"></i>
-                <ul ng-show="isEditVisible[post.id]" class="dropdown-edit" ng-style="dropdownPosition[post.id]">
-                    <li ng-click="editModal($event)">
-                        Editar
-                    </li>
-                </ul>
-            </span>
-			<span class="img-absolute">
-				<img src="{{post.postImg}}" alt="" class="post-img">
+				<i class="fa-regular fa-trash-can trash be-pointer" ng-click="removePost(post.id, $event)"></i>
+				<i class="fa-regular fa-bookmark save"></i>
+				<i class="fa-solid fa-ellipsis-vertical ellipsis be-pointer" ng-click="toggleEdit(post.id, $event)"></i>
+				<ul ng-show="isEditVisible[post.id]" class="dropdown-edit" ng-style="dropdownPosition[post.id]">
+					<li ng-click="editModal($event)"> Editar </li>
+				</ul>
 			</span>
+			<span class="img-absolute"> <img src="{{post.postImg}}" alt="" class="post-img"></span>
 			<div class="post-line"></div>
 		</div>
 	</div>

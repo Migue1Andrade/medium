@@ -6,6 +6,7 @@ fetch("header.html")
 
 			angular.element(headerDiv).injector().invoke(["$compile", function($compile) {
 				const scope = angular.element(headerDiv).scope();
+				
 				$compile(headerDiv)(scope);
 				scope.$apply();
 			}]);
