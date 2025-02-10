@@ -10,12 +10,12 @@ myApp.directive('headerDirective', function($location, PostService) {
 				scope.options = ["profile", "oi", "sign out"];
 				scope.isSelectVisible = false;
 
-				scope.toggleSelect = function(event) {
+				scope.toggleSelect = (event) => {
 					event.stopPropagation();
 					scope.isSelectVisible = !scope.isSelectVisible;
 				};
 
-				scope.selectOption = function(option, event) {
+				scope.selectOption = (option, event) => {
 					event.stopPropagation();
 					scope.isSelectVisible = false;
 
@@ -26,7 +26,7 @@ myApp.directive('headerDirective', function($location, PostService) {
 					}
 				};
 
-				scope.openModal = function(event) {
+				scope.openModal = (event) => {
 					event.stopPropagation();
 					PostService.openPostModal()
 						.then(() => console.log('Modal aberto'))

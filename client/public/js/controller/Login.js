@@ -1,8 +1,6 @@
 myApp.controller('LoginController', ['$scope', '$location', 'LoginService',
 	function($scope, $location, LoginService) {
-		$scope.registerPage = function() { 
-			$location.path('login/register');
-		};
+		$scope.registerPage = () => $location.path('login/register');
 
 		$scope.user = {
 			email: '',
@@ -11,7 +9,7 @@ myApp.controller('LoginController', ['$scope', '$location', 'LoginService',
 
 		$scope.errorMessage = '';
 
-		$scope.login = function() {
+		$scope.login = () => {
 			const { email, password } = $scope.user;
 
 			LoginService.login({ email, password })

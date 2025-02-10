@@ -7,7 +7,7 @@ const config = {
 	headers: { Authorization: `Bearer ${token}` }
 };
 
-	this.createPost = function(userId, postData) {
+	this.createPost = (userId, postData) => {
 		return $http.post(`${baseUrl}/post/create/${userId}`, postData, config);
 	};
 }]);

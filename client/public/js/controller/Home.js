@@ -6,7 +6,7 @@ myApp.controller('HomeController', ['$scope', '$location', '$window', 'PostServi
 		angular.element(document.querySelector('.modal-backdrop')).remove();
 		angular.element(document.querySelector('.modal')).remove();
 
-		$scope.like = function(postId, event) {
+		$scope.like = (postId, event) => {
 			event.stopPropagation();
 			PostService.likePost(postId)
 				.then(() => {
@@ -16,14 +16,14 @@ myApp.controller('HomeController', ['$scope', '$location', '$window', 'PostServi
 				.catch(error => console.error('Error liking post:', error));
 		};
 
-		$scope.editModal = function(event) {
+		$scope.editModal = (event) => {
 			event.stopPropagation();
 			PostService.openEditModal()
 				.then(() => $window.location.reload())
 				.catch(reason => console.log('Modal rejeitado:', reason));
 		};
 
-		$scope.toggleEdit = function(postId, event) {
+		$scope.toggleEdit = (postId, event) => {
 			event.stopPropagation();
 			localStorage.setItem('postId', postId);
 			$scope.isEditVisible[postId] = !$scope.isEditVisible[postId];
@@ -37,12 +37,12 @@ myApp.controller('HomeController', ['$scope', '$location', '$window', 'PostServi
 			}
 		};
 
-		$scope.selectPtionEdit = function(option, postId) {
+		$scope.selectPtionEdit = (option, postId) => {
 			$scope.isEditVisible[postId] = false;
 			if (option === "edit") $scope.editModal(postId);
 		};
 
-		$scope.removePost = function(postId, event) {
+		$scope.removePost = (postId, event) => {
 			event.stopPropagation();
 			PostService.removePost(postId)
 				.then(() => {
@@ -60,7 +60,7 @@ myApp.controller('HomeController', ['$scope', '$location', '$window', 'PostServi
 			return `${dia} ${meses[date.getMonth()]}, ${ano}`;
 		};
 
-		$scope.reload = function() {
+		$scope.reload = () => {
 			PostService.getPosts()
 				.then(res => {
 					$scope.posts = res.data.map(post => ({
@@ -76,10 +76,9 @@ myApp.controller('HomeController', ['$scope', '$location', '$window', 'PostServi
 					}));
 				});
 		};
-
 		$scope.reload();
 
-		$scope.goPage = function(postId) {
+		$scope.goPage = (postId) => {
 			localStorage.setItem('pagePostId', postId);
 			$location.path('/home/page');
 		};

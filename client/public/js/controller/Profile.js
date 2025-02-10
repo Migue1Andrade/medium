@@ -17,11 +17,9 @@ myApp.controller('ProfileController', ['$scope', '$location', 'ProfileService',
 			new: ''
 		};
 
-		$scope.goBack = function() {
-			$location.path('home');
-		};
+		$scope.goBack = () => $location.path('home');
 
-		$scope.togglePasswordChange = function () {
+		$scope.togglePasswordChange = () => {
 			$scope.showPasswordChange = !$scope.showPasswordChange;
 			$scope.passwords = { current: '', new: '' };
 		};
@@ -37,7 +35,7 @@ myApp.controller('ProfileController', ['$scope', '$location', 'ProfileService',
 				console.error('Erro ao buscar dados do usuário:', error);
 			});
 
-		$scope.saveChanges = function () {
+		$scope.saveChanges = () => {
 			const data = {
 				name: $scope.user.name,
 				email: $scope.user.email,
@@ -68,7 +66,7 @@ myApp.controller('ProfileController', ['$scope', '$location', 'ProfileService',
 			return `${dia} ${meses[date.getMonth()]}, ${ano}`;
 		};
 
-		$scope.loadPosts = function () {
+		$scope.loadPosts = () => {
 			if ($scope.showPosts) {
 				$scope.showPosts = false;
 			} else {

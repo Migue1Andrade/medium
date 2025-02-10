@@ -9,11 +9,9 @@ myApp.controller('RegisterController', ['$scope', '$location', 'RegisterService'
 		$scope.errorMessage = '';
 		$scope.successMessage = '';
 
-		$scope.goBack = function() {
-			$location.path('login');
-		};
+		$scope.goBack = () => $location.path('login');
 
-		$scope.register = function() {
+		$scope.register = () => {
 			const { name, email, password, confirmPassword } = $scope.user;
 
 			if (password !== confirmPassword) {

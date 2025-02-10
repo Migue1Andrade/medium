@@ -11,16 +11,14 @@ myApp.controller('PostModalController', ['$scope', '$uibModalInstance', 'PostSer
 
 		$scope.imageUrlInput = false;
 
-		$scope.cancel = function () {
+		$scope.cancel = () => {
 			$scope.newPost = {};
 			$uibModalInstance.dismiss('cancel');
 		};
 
-		$scope.toggleInput = function () {
-			$scope.imageUrlInput = !$scope.imageUrlInput;
-		};
+		$scope.toggleInput = () => $scope.imageUrlInput = !$scope.imageUrlInput;
 
-		$scope.register = function () {
+		$scope.register = () => {
 			if (!user_id) return;
 
 			PostService.createPost(user_id, $scope.newPost)

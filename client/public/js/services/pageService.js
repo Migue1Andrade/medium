@@ -6,11 +6,11 @@ myApp.service('PageService', ['$http', function($http) {
 		headers: { Authorization: `Bearer ${token}` }
 	};
 
-	this.getPostWithUser = function(postId) {
+	this.getPostWithUser = (postId) => {
 		return $http.get(`${baseUrl}/send/post/include/user/${postId}`, config);
 	};
 
-	this.likePost = function(postId, userId) {
+	this.likePost = (postId, userId) => {
 		return $http.get(`${baseUrl}/get/likes/${postId}/${userId}`, config);
 	};
 }]);

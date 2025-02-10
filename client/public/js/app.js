@@ -46,7 +46,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
 const isAuthorized = ($state, $rootScope) => {
 	const isLogged = localStorage.getItem("token");
 
-	if (!isLogged) { $state.go('login'); return }
+	if (!isLogged) { $state.go('login'); return };
 
 	$rootScope.isLogged = true;
 };

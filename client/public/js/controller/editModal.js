@@ -12,11 +12,9 @@ myApp.controller('EditPostModalController', ['$scope', '$uibModalInstance', 'Edi
 		$scope.editImage = false;
 		$scope.imageUrlInput = false;
 
-		$scope.toggleInput = function() {
-			$scope.imageUrlInput = !$scope.imageUrlInput;
-		};
+		$scope.toggleInput = () => $scope.imageUrlInput = !$scope.imageUrlInput;
 
-		$scope.cancel = function() {
+		$scope.cancel = () =>{
 			$uibModalInstance.dismiss('cancel');
 			localStorage.removeItem('postId');
 		};
@@ -33,7 +31,7 @@ myApp.controller('EditPostModalController', ['$scope', '$uibModalInstance', 'Edi
 				console.error('Erro ao carregar os dados do post:', error);
 			});
 
-		$scope.sendUpdate = function() {
+		$scope.sendUpdate = () => {
 			const updatedPost = {
 				title: $scope.editPost.title,
 				text: $scope.editPost.text,

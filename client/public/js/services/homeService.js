@@ -7,21 +7,19 @@ myApp.service('PostService', ['$http', '$window', '$uibModal', function($http, $
 		headers: { 'Authorization': `Bearer ${token}` }
 	};
 
-	this.getPosts = function() {
-		return $http.get(`${baseUrl}/post`);
-	};
+	this.getPosts = () => $http.get(`${baseUrl}/post`);
 
-	this.likePost = function(postId) {
+	this.likePost = (postId) => {
 		if (!userId) return Promise.reject('Usuário não autenticado');
 		return $http.post(`${baseUrl}/user/like/${userId}/${postId}`, {}, config);
 	};
 
-	this.removePost = function(postId) {
+	this.removePost = (postId) => {
 		if (!userId) return Promise.reject('Usuário não autenticado');
 		return $http.delete(`${baseUrl}/remove/post/${userId}/${postId}`, config);
 	};
 
-	this.openPostModal = function() {
+	this.openPostModal = () => {
 		return $uibModal.open({
 			size: 'lg',
 			backdrop: 'static',
@@ -31,7 +29,7 @@ myApp.service('PostService', ['$http', '$window', '$uibModal', function($http, $
 		}).result;
 	};
 
-	this.openEditModal = function() {
+	this.openEditModal = () => {
 		return $uibModal.open({
 			size: 'lg',
 			backdrop: 'static',
@@ -41,7 +39,7 @@ myApp.service('PostService', ['$http', '$window', '$uibModal', function($http, $
 		}).result;
 	};
 
-	this.logout = function() {
+	this.logout = () => {
 		localStorage.removeItem('authToken');
 		localStorage.removeItem('userId');
 		$window.location.href = '/#/login';

@@ -10,7 +10,7 @@ myApp.service('EditPostService', ['$http', function($http) {
 		return $http.get(`${baseUrl}/send/post/${postId}`, config);
 	};
 
-	this.updatePost = function(postId, updatedPost) {
+	this.updatePost = (postId, updatedPost) => {
 		return $http.put(`${baseUrl}/update/post/${postId}`, updatedPost, config);
 	};
 }]);

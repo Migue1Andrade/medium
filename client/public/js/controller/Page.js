@@ -3,10 +3,7 @@ myApp.controller('PageController', ['$scope', '$location', 'PageService',
 		const postId = localStorage.getItem('pagePostId');
 		const userId = localStorage.getItem('userId');
 
-		$scope.goBack = function() {
-			$location.path('home');
-		};
-
+		$scope.goBack = () => $location.path('home');
 		$scope.options = ['Edit Profile', 'Settings', 'sign out'];
 		$scope.isSelectVisible = false;
 
@@ -22,11 +19,9 @@ myApp.controller('PageController', ['$scope', '$location', 'PageService',
 			return `${dia} ${meses[parsedDate.getMonth()]}, ${ano}`;
 		};
 
-		$scope.toggleSelect = function () {
-			$scope.isSelectVisible = !$scope.isSelectVisible;
-		};
+		$scope.toggleSelect = () => $scope.isSelectVisible = !$scope.isSelectVisible;
 
-		$scope.like = function() {
+		$scope.like = () => {
 			if (!userId) return;
 
 			PageService.likePost(postId, userId)
@@ -39,15 +34,13 @@ myApp.controller('PageController', ['$scope', '$location', 'PageService',
 				});
 		};
 
-		$scope.selectOption = function (option) {
+		$scope.selectOption = (option) => {
 			if (option === 'sign out') {
 				alert('Signed Out!');
 			}
 		};
 
-		$scope.openModal = function () {
-			alert('Write Modal Opened');
-		};
+		$scope.openModal = () => alert('Write Modal Opened');
 
 		$scope.post = {
 			profileImage: '',
@@ -58,7 +51,7 @@ myApp.controller('PageController', ['$scope', '$location', 'PageService',
 			date: ''
 		};
 
-		$scope.reload = function() {
+		$scope.reload = () => {
 			PageService.getPostWithUser(postId)
 				.then(function(res) {
 					const post = Array.isArray(res.data) ? res.data[0] : res.data;

@@ -7,15 +7,15 @@ myApp.service('ProfileService', ['$http', function($http) {
 		headers: { Authorization: `Bearer ${token}` }
 	};
 
-	this.getUserProfile = function(userId) {
+	this.getUserProfile = (userId) => {
 		return $http.get(`${baseUrl}/user/${userId}`, config);
 	};
 
-	this.updateUserProfile = function(userId, data) {
+	this.updateUserProfile = (userId, data) => {
 		return $http.put(`${baseUrl}/update/user/${userId}`, data, config);
 	};
 
-	this.getUserPosts = function(userId) {
+	this.getUserPosts = (userId) =>{
 		return $http.get(`${baseUrl}/post/${userId}`);
 	};
 }]);
