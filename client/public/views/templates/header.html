@@ -1,0 +1,17 @@
+<nav>
+	<div class="nav-div">
+		<img src="../img/logo.png" alt="" class="logo">
+		<input type="text" class="search-input" placeholder="search" ng-model="searchText">
+		<span class="be-pointer" ng-click="openModal($event)">
+			<i class="fa-regular fa-pen-to-square logo write-icon"></i>
+			<span class="write-icon-text">write</span>
+		</span>
+		<i class="fa-regular fa-bell bell-icon"></i>
+		<i class="fa-regular fa-user profile-icon be-pointer" ng-click="toggleSelect($event)"></i>
+		<ul ng-show="isSelectVisible" class="select-dropdown">
+			<li ng-repeat="option in options" ng-click="selectOption(option, $event)">
+				<i ng-if="option === 'sign out'" class="fa-solid fa-right-from-bracket"></i> {{ option }}
+			</li>
+		</ul>
+	</div>
+</nav>

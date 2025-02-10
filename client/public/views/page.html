@@ -1,0 +1,44 @@
+<section id="pageController" ng-controller="PageController">
+	<header-directive></header-directive>
+	<i class="fa-solid fa-left-long be-pointer" ng-click="goBack()" class="go-back-page-to-homePage"></i>
+	<div id="content-container">
+		<h1 id="post-title">{{ post.title }}</h1>
+		<div id="author-info">
+			<img ng-src="{{ post.profileImage }}" alt="Author Image" id="author-image">
+			<div id="author-details">
+				<p id="author-name">{{ post.name }}</p>
+				<span id="post-date">{{ post.date }}</span>
+			</div>
+		</div>
+		<div id="engagement-stats">
+			<div id="engagement-left">
+				<span id="likes">
+					<i ng-class="{'fa-solid fa-heart': isLiked, 'fa-regular fa-heart': !isLiked}"
+						ng-click="like()">
+					</i>
+				</span>
+				<span id="comments">
+					<i class="fa-regular fa-comment"></i> {{ post.comments }}
+				</span>
+			</div>
+			<div id="engagement-right">
+				<span id="save">
+					<i class="fa-regular fa-bookmark"></i>
+				</span>
+				<span id="circle-play">
+					<i class="fa-regular fa-circle-play"></i>
+				</span>
+				<span id="share">
+					<i class="fa-solid fa-arrow-up-from-bracket"></i>
+				</span>
+				<span id="ellipsis">
+					<i class="fa-solid fa-ellipsis"></i>
+				</span>
+			</div>
+		</div>
+		<div id="post-highlight">
+			<p id="highlighted-text">{{ post.text }}</p>
+			<span id="highlight-label">Top highlight</span>
+		</div>
+	</div>
+</section>

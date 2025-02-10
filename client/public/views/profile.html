@@ -1,0 +1,65 @@
+<div ng-controller="ProfileController" class="profile">
+	<header-directive></header-directive>
+	<div class="container">
+		<i class="fa-solid fa-left-long be-pointer" ng-click="goBack()"></i>
+		<div class="profile-card text-center">
+			<span> Olá, {{user.name}} </span>
+			<div class="mb-3">
+				<label for="name" class="form-label">Nome</label>
+				<input type="text" id="name" class="form-control" placeholder="{{user.name}}" ng-model="user.name">
+			</div>
+			<div class="mb-3">
+				<label for="email" class="form-label">Email</label>
+				<input type="email" id="email" class="form-control" placeholder="{{user.email}}" ng-model="user.email">
+			</div>
+			<button class="btn btn-primary" ng-click="togglePasswordChange()">Trocar Senha</button>
+			<div ng-show="showPasswordChange" class="mt-4">
+				<div class="mb-3">
+					<label for="currentPassword" class="form-label">Senha Atual</label>
+					<input type="password" id="currentPassword" class="form-control" ng-model="passwords.current">
+				</div>
+				<div class="mb-3">
+					<label for="newPassword" class="form-label">Nova Senha</label>
+					<input type="password" id="newPassword" class="form-control" ng-model="passwords.new">
+				</div>
+			</div>
+			<div class="mt-4">
+				<button class="btn btn-success" ng-click="saveChanges()">Salvar Alterações</button>
+			</div>
+		</div>
+		<div class="mt-5 text-center">
+			<button class="btn btn-info" ng-click="loadPosts()">Ver Posts</button>
+		</div>
+		<div class="posts-container mt-5" ng-show="showPosts">
+			<h4>Seus Posts</h4>
+			<div class="post-div profilePosts">
+				<div ng-repeat="post in user.posts" class="post">
+					<span class="post-profile">
+						<img src="{{post.profileImage}}" alt="" class="profile-image">
+						<span>{{post.name}}</span>
+					</span>
+					<h3>{{post.title}}</h3>
+					<h5>{{post.summary}}</h5>
+					<span>
+						<span class="date">{{post.post_at}}</span>
+						<span class="likes">
+							<i class="fa-regular fa-heart"></i> {{post.post_likes}}
+						</span>
+						<span>
+							<i class="fa-regular fa-comment"></i> {{post.comments}}
+						</span>
+					</span>
+					<span class="post-footer-right">
+						<i class="fa-regular fa-trash-can trash be-pointer" ng-click="removePost(post.id)"></i>
+						<i class="fa-regular fa-bookmark save"></i>
+						<i class="fa-solid fa-ellipsis-vertical ellipsis"></i>
+					</span>
+					<span class="img-absolute">
+						<img src="{{post.postImg}}" alt="" class="post-img">
+					</span>
+					<div class="post-line"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

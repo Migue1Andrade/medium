@@ -1,0 +1,22 @@
+<div class="container" ng-controller="LoginController">
+	<h2>Login</h2>
+	<form name="loginForm" ng-submit="login()" novalidate class="login-form">
+		<div class="form-group" ng-class="{'has-error': loginForm.email.$invalid && loginForm.email.$touched}">
+			<label for="email">Email:</label>
+			<input type="email" name="email" ng-model="user.email" required class="form-control" placeholder="Digite seu email">
+		</div>
+		<div class="form-group" ng-class="{'has-error': loginForm.password.$invalid && loginForm.password.$touched}">
+			<label for="password">Senha:</label>
+			<input type="password" name="password" ng-model="user.password" required class="form-control" placeholder="Digite sua senha">
+		</div>
+		<button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid">Entrar</button>
+		<button type="button" class="btn btn-ligh register" ng-click="registerPage()">cadastrar-se</button>
+		<div ng-if="(loginForm.email.$touched && loginForm.password.$touched) && (loginForm.email.$invalid || loginForm.password.$invalid)" class="alert alert-danger">
+			Verifique se o email e a senha estão corretos.
+		</div>
+	</form>
+	<div ng-if="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+	<div ng-if="successMessage" class="alert alert-success mt-3" role="alert">
+		{{ successMessage }}
+	</div>
+</div>
