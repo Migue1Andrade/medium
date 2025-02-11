@@ -4,15 +4,12 @@ const jwt = require('jsonwebtoken');
 
 class AuthService {
 	async authenticateUser(email, password) {
-		if (!email || !password) {
-			throw new Error('Credenciais inválidas');
-		}
+		try {
+			if (!email || !password) throw new Error('Credenciais inválidas');
 
 		const user = await User.findOne({ where: { email } });
 
-		if (!user || !(await user.passwordIsValid(password))) {
-			throw new Error('Usuário ou senha incorretos');
-		}
+		if (!user || !(await user.passwordIsValid(password))) throw new Error('Usuário ou senha incorretos');
 
 		const { id } = user;
 
@@ -21,6 +18,9 @@ class AuthService {
 		});
 
 		return { token, id };
+		} catch(e) {
+			throw new Error(e.message);
+		};
 	}
 }
 

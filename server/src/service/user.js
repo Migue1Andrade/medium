@@ -42,7 +42,7 @@ class userService {
 			console.error('Erro ao atualizar usuário:', error);
 
 			return res.status(500).json({ error: 'Erro interno no servidor' });
-		}
+		};
 	};
 
     async getAllUsers() {

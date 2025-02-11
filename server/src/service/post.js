@@ -5,17 +5,19 @@ class PostService {
 	async createPost(user_id, postData) {
 		try {
 			const { title, text, summary, post_img } = postData;
-			
-			const post = await Post.create({ 
-				user_id, 
-				title, 
-				text, 
-				summary, 
+
+			const post = await Post.create({
+				user_id,
+				title,
+				text,
+				summary,
 				post_img: post_img || 'https://placehold.co/600x400'
 			});
 
 			return post;
 		} catch (error) {
+			console.log("🚀 ~ PostService ~ getAllPosts ~ error:", error);
+
 			throw new Error('Erro ao criar o post');
 		}
 	}
@@ -24,7 +26,7 @@ class PostService {
 		try {
 			const post = await Post.findOne({
 				where: {
-					id: post_id, 
+					id: post_id,
 					is_deleted: false
 				}
 			});
@@ -35,30 +37,32 @@ class PostService {
 
 			return post;
 		} catch (error) {
+			console.log("🚀 ~ PostService ~ getAllPosts ~ error:", error);
+
 			throw new Error('Erro ao buscar o post');
 		}
 	}
 
 	async deletePost(userId, postId) {
 		try {
-			const [rowsUpdated] = await Post.update({ 
-				is_deleted: true 
-			}, 
-			{ 
-				where: {
-					id: postId,
-					user_id: userId,
-					is_deleted: false 
-				},
-				returning: true
-			});
-			
-			if (rowsUpdated === 0) {
-				throw new Error('Post não encontrado ou já foi deletado');
-			}
+			const [rowsUpdated] = await Post.update({
+				is_deleted: true
+			},
+				{
+					where: {
+						id: postId,
+						user_id: userId,
+						is_deleted: false
+					},
+					returning: true
+				});
+
+			if (rowsUpdated === 0) throw new Error('Post não encontrado ou já foi deletado');
 
 			return { message: 'Post deletado com sucesso' };
 		} catch (error) {
+			console.log("🚀 ~ PostService ~ getAllPosts ~ error:", error);
+
 			throw new Error('Erro ao deletar o post');
 		}
 	}
@@ -74,51 +78,55 @@ class PostService {
 				}
 			});
 
-			console.log("🚀 ~ PostService ~ getAllPosts ~ data:", data)
 			return data;
 		} catch (error) {
+			console.log("🚀 ~ PostService ~ getAllPosts ~ error:", error);
+
 			throw new Error('Erro ao buscar dados do post');
 		}
 	}
 
-    async updatePost(post_id, postData) {
-        try {
-            const { title, text, summary, postImg } = postData;
+	async updatePost(post_id, postData) {
+		try {
+			const { title, text, summary, postImg } = postData;
 
-            const post = await Post.findByPk(post_id);
-            if (!post) {
-                throw new Error('Post não encontrado');
-            }
+			const post = await Post.findByPk(post_id);
 
-            await post.update({ title, text, summary, postImg });
+			if (!post) throw new Error('Post não encontrado');
 
-            return post;
-        } catch (error) {
-            throw new Error('Erro ao atualizar o post');
-        }
-    }
-    async getByIdIncludesUser(post_id) {
-        try {
-            const post = await Post.findOne({
-                where: { id: post_id, is_deleted: false },
-                include: [
-                    {
-                        model: User,
-                        as: 'user',
-                        attributes: ['name', 'profile_img']
-                    }
-                ]
-            });
+			await post.update({ title, text, summary, postImg });
 
-            if (!post) {
-                throw new Error('Post não encontrado');
-            }
+			return post;
+		} catch (error) {
+			console.log("🚀 ~ PostService ~ getAllPosts ~ error:", error);
 
-            return post;
-        } catch (error) {
-            throw new Error('Erro ao buscar o post');
-        }
-    }
+			throw new Error('Erro ao atualizar o post');
+		}
+	}
+	async getByIdIncludesUser(post_id) {
+		try {
+			const post = await Post.findOne({
+				where: { id: post_id, is_deleted: false },
+				include: [
+					{
+						model: User,
+						as: 'user',
+						attributes: ['name', 'profile_img']
+					}
+				]
+			});
+
+			if (!post) {
+				throw new Error('Post não encontrado');
+			}
+
+			return post;
+		} catch (error) {
+			console.log("🚀 ~ PostService ~ getAllPosts ~ error:", error);
+
+			throw new Error('Erro ao buscar o post');
+		}
+	}
 }
 
 module.exports = new PostService();
