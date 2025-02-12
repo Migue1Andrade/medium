@@ -4,8 +4,7 @@ const jwt = require('jsonwebtoken');
 
 class AuthService {
 	async authenticateUser(email, password) {
-		try {
-			if (!email || !password) throw new Error('Credenciais inválidas');
+		if (!email || !password) throw new Error('Credenciais inválidas');
 
 		const user = await User.findOne({ where: { email } });
 
@@ -18,10 +17,7 @@ class AuthService {
 		});
 
 		return { token, id };
-		} catch(e) {
-			throw new Error(e.message);
-		};
-	}
-}
+	};
+};
 
 module.exports = new AuthService();
