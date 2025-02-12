@@ -3,10 +3,9 @@ const dbConfig = require('../config/database');
 
 const User = require('../models/User.js');
 const Post = require('../models/Post.js');
-const Comments = require('../models/Comments.js')
 const PostLikes = require('../models/PostLikes.js');
 
-const models = [User, Post, Comments, PostLikes];
+const models = [User, Post, PostLikes];
 const connection = new Sequelize(dbConfig);
 
 models.forEach(model => model.init(connection));

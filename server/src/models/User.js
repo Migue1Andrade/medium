@@ -19,7 +19,6 @@ class User extends Model {
     static associate(models) {
         User.hasMany(models.Post, { foreignKey: 'user_id' });
         User.hasMany(models.PostLikes, { foreignKey: 'user_id' });
-        User.hasMany(models.Comments, { foreignKey: 'user_id' });
     }
 
     async passwordIsValid(password) {
