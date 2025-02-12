@@ -9,24 +9,24 @@ class Post extends Model {
 			text: DataTypes.STRING,
 			summary: DataTypes.STRING,
 			likes: DataTypes.INTEGER,
-            is_deleted: DataTypes.BOOLEAN,
+			is_deleted: DataTypes.BOOLEAN,
 			post_img: DataTypes.STRING
 		}, {
 			sequelize: connection,
-            tableName: 'post',
+			tableName: 'post',
 			createdAt: 'post_at',
 			updatedAt: 'updated_at',
 		});
-	}
+	};
 
 	static associate(models) {
-        Post.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
+		Post.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
 		Post.hasMany(models.PostLikes, { foreignKey: 'post_id' });
-	}
+	};
 
 	async passwordIsValid(password) {
 		return bcrypt.compare(password, this.password);
-	}
-}
+	};
+};
 
-module.exports = Post; 
+module.exports = Post;
