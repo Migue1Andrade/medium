@@ -8,7 +8,7 @@ class LikeService {
 		if (!post) throw new Error('Post não encontrado');
 
 		const [existingLike, created] = await Like.findOrCreate({
-			where: { user_id, post_id },
+			where: { user_id, post_id }
 		});
 
 		if (!created) {
