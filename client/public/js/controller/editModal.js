@@ -11,7 +11,6 @@ myApp.controller('EditPostModalController', ['$scope', '$uibModalInstance', 'Edi
 
 		$scope.editImage = false;
 		$scope.imageUrlInput = false;
-
 		$scope.toggleInput = () => $scope.imageUrlInput = !$scope.imageUrlInput;
 
 		$scope.cancel = () =>{
