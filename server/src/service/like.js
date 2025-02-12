@@ -2,7 +2,7 @@ const Like = require('../models/PostLikes');
 const Post = require('../models/Post');
 
 class LikeService {
-	async toggleLike(post_id, user_id) {
+	async onLike(post_id, user_id) {
 		try {
 			const post = await Post.findByPk(post_id);
 
@@ -30,7 +30,7 @@ class LikeService {
 				is_deleted: existingLike.is_deleted,
 			};
 		} catch (error) {
-			console.log("🚀 ~ LikeService ~ toggleLike ~ error:", error);
+			console.log("🚀 ~ LikeService ~ onlike ~ error:", error);
 
 			throw new Error('Erro ao registrar like');
 		};

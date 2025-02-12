@@ -21,10 +21,7 @@
 			<span class="post-footer-right">
 				<i class="fa-regular fa-trash-can trash be-pointer" ng-click="removePost(post.id, $event)"></i>
 				<i class="fa-regular fa-bookmark save"></i>
-				<i class="fa-solid fa-ellipsis-vertical ellipsis be-pointer" ng-click="toggleEdit(post.id, $event)"></i>
-				<ul ng-show="isEditVisible[post.id]" class="dropdown-edit" ng-style="dropdownPosition[post.id]">
-					<li ng-click="editModal($event)"> Editar </li>
-				</ul>
+				<i class="fa-solid fa-regular fa-pen ellipsis be-pointer" ng-click="onEditModal(post.id, $event)"></i>
 			</span>
 			<span class="img-absolute"> <img src="{{post.postImg}}" alt="" class="post-img"></span>
 			<div class="post-line"></div>

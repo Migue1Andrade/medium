@@ -22,9 +22,10 @@ myApp.service('PostService', ['$http', '$window', '$uibModal', function($http, $
 	this.openPostModal = () => {
 		return $uibModal.open({
 			size: 'lg',
+			replace: true,
 			backdrop: 'static',
 			keyboard: false,
-			templateUrl: '../../views/postModal.html',
+			templateUrl: 'views/postmodal.html',
 			controller: 'PostModalController'
 		}).result;
 	};
@@ -34,7 +35,7 @@ myApp.service('PostService', ['$http', '$window', '$uibModal', function($http, $
 			size: 'lg',
 			backdrop: 'static',
 			keyboard: false,
-			templateUrl: '../../views/editPostModal.html',
+			templateUrl: 'views/editPostModal.html',
 			controller: 'EditPostModalController'
 		}).result;
 	};

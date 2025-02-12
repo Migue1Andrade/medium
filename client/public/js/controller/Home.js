@@ -16,37 +16,23 @@ myApp.controller('HomeController', ['$scope', '$location', '$window', 'PostServi
 				.catch(error => console.error('Error liking post:', error));
 		};
 
-		$scope.editModal = (event) => {
-			event.stopPropagation();
-			PostService.openEditModal()
-				.then(() => $window.location.reload())
-				.catch(reason => console.log('Modal rejeitado:', reason));
-		};
-
-		$scope.toggleEdit = (postId, event) => {
+		$scope.onEditModal = (postId, event) => {
 			event.stopPropagation();
 			localStorage.setItem('postId', postId);
-			$scope.isEditVisible[postId] = !$scope.isEditVisible[postId];
 
-			if (event) {
-				const rect = event.target.getBoundingClientRect();
-				$scope.dropdownPosition[postId] = {
-					top: rect.bottom + window.scrollY - 160 + 'px',
-					left: rect.left + window.scrollX - 420 + 'px'
-				};
-			}
-		};
-
-		$scope.selectPtionEdit = (option, postId) => {
-			$scope.isEditVisible[postId] = false;
-			if (option === "edit") $scope.editModal(postId);
+			PostService.openEditModal()
+			.then(() => $window.location.reload())
+			.catch(reason => console.log('Modal rejeitado:', reason));
 		};
 
 		$scope.removePost = (postId, event) => {
 			event.stopPropagation();
 			PostService.removePost(postId)
 				.then(() => {
-					alert('Post deleted successfully');
+					const confirmDelete = confirm('quer mesmo deletar esse post');
+
+					if (!confirmDelete) return;
+
 					$scope.reload();
 				})
 				.catch(error => console.error('Error deleting post:', error));
