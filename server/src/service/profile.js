@@ -8,7 +8,7 @@ class PostService {
 			include: {
 				model: User,
 				as: 'user',
-				attributes: ['name', 'email', 'profile_img'],
+				attributes: ['name', 'email', 'profile_img']
 			}
 		});
 
