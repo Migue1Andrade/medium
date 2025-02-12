@@ -11,9 +11,9 @@ module.exports = {
 			console.error("🚀 ~ checkLike ~ error:", error);
 
 			return res.status(500).json({ error: 'Erro ao processar o like.' });
-		}
+		};
 	},
-	
+
 	async like(req, res) {
 		try {
 			const { post_id, user_id } = req.params;
@@ -24,6 +24,6 @@ module.exports = {
 			console.error("🚀 ~ likePost ~ error:", error);
 
 			return res.status(500).json({ error: 'Erro ao registrar like' });
-		}
+		};
 	}
 };

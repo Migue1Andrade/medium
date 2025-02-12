@@ -10,21 +10,21 @@ module.exports = {
 			console.error("🚀 ~ createUser ~ error:", error);
 
 			return res.status(500).json({ error: 'Erro ao criar usuário' });
-		}
+		};
 	},
 
 	 async index(req, res) {
 		try {
 			const data = await UserService.getAllUsers();
-	
+
 			if (!data.length) return res.status(204).json([]);
-			
+
 			return res.json(data);
 		} catch (error) {
 			console.error("🚀 ~ index ~ error:", error);
 
 			return res.status(500).json({ error: error.message });
-		}
+		};
 	},
 
 	async getUserById(req, res) {
@@ -37,7 +37,7 @@ module.exports = {
 			console.error("🚀 ~ getUserById ~ error:", error);
 
 			return res.status(403).json({ message: 'Erro ao buscar usuário' });
-		}
+		};
 	},
 
 	async updateUser(req, res) {
@@ -49,6 +49,6 @@ module.exports = {
 		} catch (error) {
 			console.error("🚀 ~ updateUser ~ error:", error);
 			return res.status(400).json({ error: error.message });
-		}
+		};
 	}
-}
+};

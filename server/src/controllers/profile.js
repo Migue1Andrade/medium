@@ -10,6 +10,6 @@ module.exports = {
 			console.error("🚀 ~ getUserPosts ~ error:", error);
 
 			return res.status(401).json({ error: 'Erro ao buscar os posts do usuário' });
-		}
+		};
 	}
 };

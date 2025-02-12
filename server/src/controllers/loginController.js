@@ -12,6 +12,6 @@ module.exports = {
 			console.error("🚀 ~ store ~ error:", error);
 
 			return res.status(401).json({ errors: [error.message] });
-		}
+		};
 	}
 };

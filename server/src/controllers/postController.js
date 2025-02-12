@@ -9,11 +9,11 @@ module.exports = {
 			const post = await PostService.createPost(user_id, req.body);
 
 			return res.status(200).json({ message: 'Post criado com sucesso', post });
-		} catch (e) {
-			console.log("🚀 ~ store ~ e:", e);
+		} catch (error) {
+			console.log("🚀 ~ store ~ e:", error);
 
-			return res.status(400).json({ error: e.message });
-		}
+			return res.status(400).json({ error: error.message });
+		};
 	},
 
 	async delete(req, res) { 
@@ -27,7 +27,7 @@ module.exports = {
 			console.error("🚀 ~ delete ~ error:", error);
 
 			return res.status(400).json({ error: error.message });
-		}
+		};
 	},
 
 	async getAll(req, res) {
@@ -41,7 +41,7 @@ module.exports = {
 			console.log("🚀 ERRO É ESSE:", error);
 
 			return res.status(500).json({ error: error.message });
-		}
+		};
 	},
 
 	async getOne(req, res) {
@@ -51,11 +51,11 @@ module.exports = {
 			const post = await PostService.getPostById(post_id);
 
 			return res.json(post);
-		} catch (e) {
-			console.log("🚀 ~ index ~ e:", e);
+		} catch (error) {
+			console.log("🚀 ~ index ~ e:", error);
 
-			return res.status(400).json({ error: e.message });
-		}
+			return res.status(400).json({ error: error.message });
+		};
 	},
 
 	async getByIdIncludesUser(req, res) {
@@ -68,7 +68,7 @@ module.exports = {
 			console.error("🚀 ~ getPostById ~ error:", error);
 
 			return res.status(400).json({ error: 'Erro ao buscar o post' });
-		}
+		};
 	},
 
 	async updatePost(req, res) {
@@ -81,7 +81,7 @@ module.exports = {
 			console.error("🚀 ~ updatePost ~ error:", error);
 
 			return res.status(400).json({ error: 'Erro ao atualizar o post' });
-		}
+		};
 	},
 
 	async getUserPosts(req, res) {
@@ -93,6 +93,6 @@ module.exports = {
 			console.error("🚀 ~ getUserPosts ~ error:", error);
 
 			return res.status(401).json({ error: 'Erro ao buscar os posts do usuário' });
-		}
+		};
 	}
-}
+};
