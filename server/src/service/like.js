@@ -7,50 +7,50 @@ class LikeService {
 
 		if (!post) throw new Error('Post não encontrado');
 
-		const [existingLike, created] = await Like.findOrCreate({
+		const [like, isCreated] = await Like.findOrCreate({
 			where: { user_id, post_id }
 		});
 
-		if (!created) {
-			existingLike.is_deleted = !existingLike.is_deleted;
-			post.likes += existingLike.is_deleted ? -1 : 1;
+		if (!isCreated) {
+			like.is_deleted = !like.is_deleted;
+			post.likes += like.is_deleted ? -1 : 1;
 		} else {
-			existingLike.is_deleted = false;
+			like.is_deleted = false;
 			post.likes += 1;
 		};
 
-		await existingLike.save();
+		await like.save();
 		await post.save();
 
 		return {
-			message: created ? 'Like registrado com sucesso!' : 'Like atualizado com sucesso!',
+			message: isCreated ? 'Like registrado com sucesso!' : 'Like atualizado com sucesso!',
 			post_id: post.id,
 			likes: post.likes,
-			is_deleted: existingLike.is_deleted,
+			is_deleted: like.is_deleted
 		};
 	};
 
 	async checkLike(postId, userId) {
-		const existingLike = await Like.findOne({
+		const like = await Like.findOne({
 			where: {
 				post_id: postId,
-				user_id: userId,
+				user_id: userId
 			}
 		});
 
-		if (existingLike) {
-			existingLike.is_deleted = !existingLike.is_deleted;
-			await existingLike.save();
+		if (like) {
+			like.is_deleted = !like.is_deleted;
+			await like.save();
 
 			return {
-				isLiked: !existingLike.is_deleted,
-				message: existingLike.is_deleted ? 'Like removido com sucesso.' : 'Like adicionado novamente.'
+				isLiked: !like.is_deleted,
+				message: like.is_deleted ? 'Like removido com sucesso.' : 'Like adicionado novamente.'
 			};
 		} else {
 			await Like.create({
 				post_id: postId,
 				user_id: userId,
-				is_deleted: false,
+				is_deleted: false
 			});
 
 			return { isLiked: true, message: 'Like adicionado com sucesso.' };
