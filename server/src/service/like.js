@@ -54,7 +54,7 @@ class LikeService {
 			});
 
 			return { isLiked: true, message: 'Like adicionado com sucesso.' };
-		}
+		};
 	};
 };
 

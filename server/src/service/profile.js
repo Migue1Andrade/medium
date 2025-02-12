@@ -4,7 +4,9 @@ const User = require('../models/User');
 class PostService {
 	async getUserPosts(user_id) {
 		const posts = await Post.findAll({
-			where: { user_id },
+			where: {
+				user_id
+			},
 			include: {
 				model: User,
 				as: 'user',

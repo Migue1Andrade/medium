@@ -28,9 +28,9 @@ class userService {
 		if (email) user.email = email;
 
 		if (newPassword) {
-			const salt = await bcrypt.genSalt(10);
+			const hash = await bcrypt.genSalt(10);
 
-			user.password = await bcrypt.hash(newPassword, salt);
+			user.password = await bcrypt.hash(newPassword, hash);
 		};
 
 		await user.save();
@@ -46,8 +46,8 @@ class userService {
 
 	async createUser(userData) {
 		const { name, password, email } = userData;
-		const salt = genSaltSync(saltRounds);
-		const hashedPassword = hashSync(password, salt);
+		const hash = genSaltSync(saltRounds);
+		const hashedPassword = hashSync(password, hash);
 
 		const user = await User.create({
 			name,

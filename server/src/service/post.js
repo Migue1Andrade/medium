@@ -53,7 +53,7 @@ class PostService {
 			include: {
 				model: User,
 				as: 'user',
-				attributes: ['name', 'profile_img'],
+				attributes: ['name', 'profile_img']
 			}
 		});
 
@@ -74,7 +74,10 @@ class PostService {
 
 	async getByIdIncludesUser(post_id) {
 		const post = await Post.findOne({
-			where: { id: post_id, is_deleted: false },
+			where: {
+				id: post_id,
+				is_deleted: false
+			},
 			include: [
 				{
 					model: User,
