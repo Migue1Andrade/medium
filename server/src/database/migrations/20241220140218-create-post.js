@@ -1,14 +1,13 @@
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
-	
+
 module.exports = {
 	async up (queryInterface, Sequelize) {
 
 		const transaction = await queryInterface.sequelize.transaction();
-	
+
 		try {
-			
 		await queryInterface.createTable('post', { 
 			id: {
 				type: Sequelize.INTEGER,
@@ -20,10 +19,10 @@ module.exports = {
 				type: Sequelize.INTEGER,
 				allowNull: false,
 				references: {
-					model: 'users', 
-					key: 'id' 
+					model: 'users',
+					key: 'id'
 				},
-				onUpdate: 'CASCADE', 
+				onUpdate: 'CASCADE',
 				onDelete: 'CASCADE'
 			},
 			title: {
@@ -31,7 +30,7 @@ module.exports = {
 				allowNull: false
 			},
 			text: {
-				type: Sequelize.TEXT, 
+				type: Sequelize.TEXT,
 				allowNull: false
 			},
 			summary: {
@@ -71,11 +70,10 @@ module.exports = {
 		} catch (error) {
 			await transaction.rollback();
 			throw error;
-		}
+		};
 	},
 
   async down (queryInterface) {
-
 	const transaction = queryInterface.sequelize.transaction();
 
 	try {
@@ -83,6 +81,6 @@ module.exports = {
 	} catch (error) {
 		console.log(error);
 		await transaction.rollback();
-	}
+	};
   }
 };
