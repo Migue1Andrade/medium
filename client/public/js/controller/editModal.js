@@ -18,6 +18,8 @@ myApp.controller('EditPostModalController', ['$scope', '$uibModalInstance', 'Edi
 			localStorage.removeItem('postId');
 		};
 
+		$scope.editPostImage = () => $scope.editImage = true;
+
 		EditPostService.getPost(postId)
 			.then(function(response) {
 				const post = response.data;

@@ -21,7 +21,7 @@
 				<label>Imagem Atual</label>
 				<div ng-show="!editImage" class="margin-botton">
 					<img id="current-img" ng-src="{{ editPost.image }}" alt="Imagem atual do post" style="max-width: 200px; margin-bottom: 10px;">
-					<button type="button" class="btn btn-secondary" ng-click="editImage = true"> Alterar Imagem </button>
+					<button type="button" class="btn btn-secondary" ng-click="editPostImage"> Alterar Imagem </button>
 				</div>
 				<div ng-show="editImage">
 					<div ng-show="!imageUrlInput" class="margin-bottom">
