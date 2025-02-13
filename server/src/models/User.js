@@ -7,12 +7,12 @@ class User extends Model {
 			name: DataTypes.STRING,
 			password: DataTypes.STRING,
 			email: DataTypes.STRING,
-			profile_img: DataTypes.STRING,
+			profile_img: DataTypes.STRING
 		}, {
 			sequelize: connection,
 			tableName: 'users',
 			createdAt: 'created_at',
-			updatedAt: 'updated_at',
+			updatedAt: 'updated_at'
 		});
 	};
 

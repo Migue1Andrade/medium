@@ -15,7 +15,7 @@ class Post extends Model {
 			sequelize: connection,
 			tableName: 'post',
 			createdAt: 'post_at',
-			updatedAt: 'updated_at',
+			updatedAt: 'updated_at'
 		});
 	};
 
