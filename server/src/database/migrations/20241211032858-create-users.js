@@ -50,14 +50,15 @@ module.exports = {
 		};
 	},
 
-  async down (queryInterface) {
-	const transaction = queryInterface.sequelize.transaction();
+	async down (queryInterface) {
+		const transaction = queryInterface.sequelize.transaction();
 
-	try {
-		await queryInterface.dropTable('users');
-	} catch (error) {
-		console.log("🚀 ~ down ~ error:", error)
-		await transaction.rollback();
-	};
-  }
+		try {
+			await queryInterface.dropTable('users');
+		} catch (error) {
+			console.log("🚀 ~ down ~ error:", error);
+
+			await transaction.rollback();
+		};
+	}
 };
