@@ -1,4 +1,3 @@
-require('dotenv').config();
 const AuthService = require('../service/login.js');
 
 module.exports = {
