@@ -1,10 +1,8 @@
 const express = require('express');
-
 const userController = require('../controllers/userController.js');
 const loginRequired = require('../middlewares/loginRequire.js');
 const validate = require('../schema/validate.js');
 const CreateUser = require('../schema/CreateUser.js');
-
 const routes = express.Router();
 
 routes.put('/api/update/user/:user_id', loginRequired, userController.updateUser);

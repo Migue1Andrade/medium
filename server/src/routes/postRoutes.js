@@ -1,8 +1,6 @@
 const express = require('express');
-
 const postController = require('../controllers/postController.js');
 const loginRequired = require('../middlewares/loginRequire.js');
-
 const routes = express.Router();
 
 routes.post('/api/post/create/:user_id', loginRequired, postController.store);
