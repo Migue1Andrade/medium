@@ -9,14 +9,14 @@ myApp.controller('PageController', ['$scope', '$location', 'PageService',
 
 		const formatDate = (date) => {
 			const parsedDate = new Date(date);
-			const dia = parsedDate.getDate().toString().padStart(2, '0');
-			const ano = parsedDate.getFullYear();
-			const meses = [
+			const day = parsedDate.getDate().toString().padStart(2, '0');
+			const year = parsedDate.getFullYear();
+			const mounth = [
 				"jan", "fev", "mar", "abr", "mai", "jun",
 				"jul", "ago", "set", "out", "nov", "dez"
 			];
 
-			return `${dia} ${meses[parsedDate.getMonth()]}, ${ano}`;
+			return `${day} ${mounth[parsedDate.getMonth()]}, ${year}`;
 		};
 
 		$scope.toggleSelect = () => $scope.isSelectVisible = !$scope.isSelectVisible;

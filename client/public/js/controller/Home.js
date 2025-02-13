@@ -40,10 +40,10 @@ myApp.controller('HomeController', ['$scope', '$location', '$window', 'PostServi
 
 		const formatDate = (date) => {
 			date = new Date(date);
-			const dia = date.getDate().toString().padStart(2, '0');
-			const ano = date.getFullYear();
-			const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
-			return `${dia} ${meses[date.getMonth()]}, ${ano}`;
+			const day = date.getDate().toString().padStart(2, '0');
+			const year = date.getFullYear();
+			const mounth = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+			return `${day} ${mounth[date.getMonth()]}, ${year}`;
 		};
 
 		$scope.reload = () => {
