@@ -3,9 +3,8 @@ const profileService = require('../service/profile.js');
 
 module.exports = {
 	async store(req, res) {
-		const { user_id } = req.params;
-
 		try {
+			const { user_id } = req.params;
 			const post = await PostService.createPost(user_id, req.body);
 
 			return res.status(200).json({ message: 'Post criado com sucesso', post });
@@ -17,9 +16,8 @@ module.exports = {
 	},
 
 	async delete(req, res) { 
-		const { userId, postId } = req.params;
-
 		try {
+			const { userId, postId } = req.params;
 			const response = await PostService.deletePost(userId, postId);
 
 			return res.status(200).json(response);
@@ -45,9 +43,8 @@ module.exports = {
 	},
 
 	async getOne(req, res) {
-		const { post_id } = req.params;
-
 		try {
+			const { post_id } = req.params;
 			const post = await PostService.getPostById(post_id);
 
 			return res.json(post);
