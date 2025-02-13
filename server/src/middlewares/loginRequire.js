@@ -4,7 +4,7 @@ const cors = require('cors');
 module.exports = (req, res, next) => {
 	const { authorization } = req.headers;
 
-	if(!authorization) return res.status(401).json('Voce precisa fazer um login');
+	if(!authorization) throw new Error('Token não informado');
 
 	const token = authorization.split(' ')[1];
 
@@ -17,7 +17,8 @@ module.exports = (req, res, next) => {
 
 		return next();
 	} catch(error) {
-		console.log("🚀 ~ e:", error);
-		return res.status(401).json('token inspirado ou invalido');
+		console.log("🚀 ~ error:", error);
+
+		throw new Error('token inspirado ou invalido');
 	};
 };
