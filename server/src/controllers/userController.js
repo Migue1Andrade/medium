@@ -30,6 +30,7 @@ module.exports = {
 	async getUserById(req, res) {
 		try {
 			const { user_id } = req.params;
+
 			const user = await UserService.getUserById(user_id);
 
 			return res.status(200).json(user);
@@ -41,13 +42,15 @@ module.exports = {
 	},
 
 	async updateUser(req, res) {
-		const { user_id } = req.params;
-
 		try {
+			const { user_id } = req.params;
+
 			const response = await UserService.updateUser(user_id, req.body);
+
 			return res.status(200).json(response);
 		} catch (error) {
 			console.error("🚀 ~ updateUser ~ error:", error);
+
 			return res.status(400).json({ error: error.message });
 		};
 	}
