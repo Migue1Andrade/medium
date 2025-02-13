@@ -3,11 +3,12 @@ const validate = (schema) => async (req, res, next) => {
 		await schema.validate({
 			body: req.body,
 			query: req.query,
-			params: req.params,
-		});
+			params: req.params
+		}).unknown(false);
+
 		return next();
-	} catch (err) {
-		return res.status(400).json({ type: err.name, message: err.message });
+	} catch (error) {
+		throw new Error(error.errors);
 	};
 };
 
