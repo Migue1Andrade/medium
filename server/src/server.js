@@ -16,7 +16,7 @@ const start = port => {
 	} catch (error) {
 		console.error(error);
 		process.exit();
-	}
+	};
 };
 
 start(3000);
