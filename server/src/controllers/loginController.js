@@ -1,5 +1,5 @@
 require('dotenv').config();
-const AuthService = require('../service/auth.js');
+const AuthService = require('../service/login.js');
 
 module.exports = {
 	async store(req, res) {
